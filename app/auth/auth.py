@@ -56,10 +56,9 @@ def user_reg():
         db.session.add(data)
         db.session.commit()
 
-        # Add user to MongoDB
         mongo_collection.insert_one({
             'name': name,
-            'password': password,  # Consider hashing the password
+            'password': password,
             'is_active': False
         })
 

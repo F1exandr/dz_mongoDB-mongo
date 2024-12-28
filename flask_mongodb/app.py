@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, Response
+from flask import Flask, Response, render_template
 from pymongo import MongoClient
 from bson import json_util
 
@@ -60,11 +60,8 @@ def update(age, new_name):
 
 @app.route('/display_all')
 def display_all():
-    # Fetch all documents from the collection
     result = collection.find()
-    # Convert the cursor to a list of dictionaries
     documents = list(result)
-    # Render the template with the documents
     return render_template('display_all.html', documents=documents)
 
 
